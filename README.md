@@ -5,7 +5,7 @@ The goal was to use it in a jEdit plugin, but you can use it for any other purpo
 
 It doesn't not support all WKT syntax but might be extended in the future.
 
-##Supported structures
+## Supported structures
 
 * POINT
 * LINESTRING
@@ -15,9 +15,8 @@ It doesn't not support all WKT syntax but might be extended in the future.
 * MULTILINESTRING
 * GEOMETRYCOLLECTION
 
-##Example
+## Example
 
-#### Grammar
 ```java
 Start start = new WKT(new StringReader("LINESTRING(30 10,-3.2011243453   -101.12124240)"))
     .Start();
