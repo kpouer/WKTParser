@@ -1,0 +1,175 @@
+/*
+The MIT License (MIT)
+Copyright (c) 2020 Matthieu Casanova
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
+rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit
+persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the
+Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+options {
+    MULTI=true;
+    NODE_DEFAULT_VOID=true;
+    KEEP_LINE_COLUMN=true;
+    STATIC = false;
+    VISITOR = true;
+    TRACK_TOKENS = true;
+    NODE_PREFIX="";
+   DEBUG_PARSER = true;
+}
+
+PARSER_BEGIN(WKT)
+package com.kpouer.wkt;
+
+import java.io.*;
+
+/**
+* @author Matthieu Casanova
+*/
+public class WKT
+{
+}
+
+PARSER_END(WKT)
+
+SKIP:
+{
+  " "
+| "\t"
+| "\r"
+| "\n"
+}
+
+TOKEN [IGNORE_CASE]:
+{
+  <POINT:              "POINT">
+| <LINESTRING:         "LINESTRING">
+| <POLYGON:	           "POLYGON">
+| <MULTIPOINT:         "MULTIPOINT">
+| <MULTILINESTRING:    "MULTILINESTRING">
+| <MULTIPOLYGON:       "MULTIPOLYGON">
+| <GEOMETRYCOLLECTION: "GEOMETRYCOLLECTION">
+}
+
+TOKEN:
+{
+  <EMPTY: "EMPTY">
+}
+
+TOKEN:
+{
+  <LPAREN : "(">
+| <RPAREN : ")">
+| <COMMA  : ",">
+| <MINUS  : "-">
+| <DOT    : ".">
+}
+
+TOKEN:
+{
+    <FLOATING_POINT_LITERAL:
+        <DECIMAL_LITERAL> (<DOT>(<DECIMAL_LITERAL>)*)?
+    |   <MINUS> <DECIMAL_LITERAL> (<DOT>(<DECIMAL_LITERAL>)*)?
+    >
+|
+    <#DECIMAL_LITERAL: ["1"-"9"] (["0"-"9"])*>
+}
+
+Start Start() #Start : {}
+{
+    (
+        point()
+    |
+        lineString()
+    |
+        polygon()
+    |
+        multiPoint()
+    |
+        multilineString()
+    |
+        multiPolygon()
+    |
+        geometryCollection()
+    )*
+    { return jjtThis; }
+}
+
+void point(): {}
+{
+    <POINT> ( pointDef() | <EMPTY> )
+}
+
+void pointDef(): {}
+{
+    <LPAREN> coord() <RPAREN>
+}
+
+void coord() #Point: {}
+{
+    <FLOATING_POINT_LITERAL> <FLOATING_POINT_LITERAL> [ <FLOATING_POINT_LITERAL> ]
+}
+
+void lineString(): {}
+{
+    <LINESTRING> ( lineStringDef() | <EMPTY> )
+}
+
+void lineStringDef() #LineString: {}
+{
+    <LPAREN> coord() (<COMMA> coord())+ <RPAREN>
+}
+
+void polygon(): {}
+{
+    <POLYGON> ( polygonDef() | <EMPTY> )
+}
+
+void polygonDef() #Polygon: {}
+{
+    <LPAREN> <LPAREN> coord() (<COMMA> coord())+ <RPAREN>  <RPAREN>
+}
+
+void multilineString() #MultiLineString: {}
+{
+    <MULTILINESTRING> <LPAREN> lineStringDef()  (<COMMA> lineStringDef())* <RPAREN>
+}
+
+void multiPoint() #MultiPoint: {}
+{
+    <MULTIPOINT> ( <LPAREN> (pointDef() | coord()) (<COMMA> (pointDef() | coord()))* <RPAREN> | <EMPTY> )
+}
+
+void multiPolygon() #MultiPolygon: {}
+{
+    <MULTIPOLYGON> ( <LPAREN> polygonDef() (<COMMA> polygonDef())* <RPAREN> | <EMPTY> )
+}
+
+void geometryCollection() #GeometryCollection: {}
+{
+    <GEOMETRYCOLLECTION> ( <LPAREN> geometryCollectionDef() (<COMMA> geometryCollectionDef())* <RPAREN> | <EMPTY> )
+}
+
+void geometryCollectionDef(): {}
+{
+        point()
+    |
+        lineString()
+    |
+        polygon()
+    |
+        multiPoint()
+    |
+        multilineString()
+    |
+        multiPolygon()
+}

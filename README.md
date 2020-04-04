@@ -1,2 +1,27 @@
 # WKTParser
-A parser for WKT geometry files (Well Know Text)
+A simple WKT (Well Know Text) parser grammar written for JavaCC.
+
+The goal was to use it in a jEdit plugin, but you can use it for any other purpose
+
+It doesn't not support all WKT syntax but might be extended in the future.
+
+##Supported structures
+
+* POINT
+* LINESTRING
+* POLYGON
+* MULTIPOINT
+* MULTIPOLYGON
+* MULTILINESTRING
+* GEOMETRYCOLLECTION
+
+##Example
+
+#### Grammar
+```java
+Start start = new WKT(new StringReader("LINESTRING(30 10,-3.2011243453   -101.12124240)"))
+    .Start();
+LineString linestring = (LineString) start.jjtGetChild(0);
+Point point1 = (Point) linestring.jjtGetChild(0);
+Point point2 = (Point) linestring.jjtGetChild(1);
+```
