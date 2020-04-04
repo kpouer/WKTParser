@@ -77,11 +77,9 @@ TOKEN:
 TOKEN:
 {
     <FLOATING_POINT_LITERAL:
-        <DECIMAL_LITERAL> (<DOT>(<DECIMAL_LITERAL>)*)?
-    |   <MINUS> <DECIMAL_LITERAL> (<DOT>(<DECIMAL_LITERAL>)*)?
+                ["1"-"9"] (["0"-"9"])* (<DOT>(["0"-"9"])*)?
+    |   <MINUS> ["1"-"9"] (["0"-"9"])* (<DOT>(["0"-"9"])*)?
     >
-|
-    <#DECIMAL_LITERAL: ["1"-"9"] (["0"-"9"])*>
 }
 
 Start Start() #Start : {}

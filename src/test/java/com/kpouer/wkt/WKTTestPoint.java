@@ -15,8 +15,8 @@ class WKTTestPoint {
 
     @Test
     void point2() throws ParseException {
-        Start   start = new WKT(new StringReader("point(3.2011243453   101.12124240)")).Start();
-        checkPoint((Point) start.jjtGetChild(0), "3.2011243453", "101.12124240");
+        Start   start = new WKT(new StringReader("point(3.02011243453   101.12124240)")).Start();
+        checkPoint((Point) start.jjtGetChild(0), "3.02011243453", "101.12124240");
     }
 
     @Test
