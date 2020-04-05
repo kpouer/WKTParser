@@ -24,7 +24,7 @@ options {
     VISITOR = true;
     TRACK_TOKENS = true;
     NODE_PREFIX="";
-   DEBUG_PARSER = true;
+    DEBUG_PARSER=false;
 }
 
 PARSER_BEGIN(WKT)
