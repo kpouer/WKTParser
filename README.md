@@ -26,5 +26,5 @@ Point point2 = (Point) linestring.jjtGetChild(1);
 ```
 
 ## Licence
-------
+
 WKT Parser is open source and licensed under the MIT License.
