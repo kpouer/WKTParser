@@ -62,8 +62,13 @@ jobs:
     #- run: |
     #   make bootstrap
     #   make release
-    - name: maven build
-      run: mvn clean package
+   # - name: maven build
+   #   run: mvn clean package
+    
+    - run: |
+       mvn clean package
+      
+      
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
