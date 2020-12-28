@@ -1,3 +1,6 @@
+![Java CI with Maven](https://github.com/kpouer/WKTParser/workflows/Java%20CI%20with%20Maven/badge.svg)
+![CodeQL](https://github.com/kpouer/WKTParser/workflows/CodeQL/badge.svg)
+
 # WKTParser
 A simple WKT (Well Know Text) parser grammar written for JavaCC.
 
