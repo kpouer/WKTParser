@@ -17,23 +17,29 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  */
 package com.kpouer.wkt.shape;
 
-import java.util.List;
-
 /**
  * @since 1.1.0
  * @author Matthieu Casanova
  */
-public class MultiLineString extends AbstractMultiShape<LineString> {
-    public MultiLineString(List<LineString> lineStrings) {
-        super(lineStrings);
-    }
-
-    public List<LineString> getLineStrings() {
-        return shapes;
-    }
+public abstract class AbstractShape implements Shape {
+    private Point barycenter;
 
     @Override
-    public MultiLineString clone() {
-        return (MultiLineString) super.clone();
+    public Point getBarycenter() {
+        if (barycenter == null) {
+            barycenter = computeBarycenter();
+        }
+        return barycenter;
+    }
+
+    protected abstract Point computeBarycenter();
+
+    @Override
+    public AbstractShape clone() {
+        try {
+            return (AbstractShape) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

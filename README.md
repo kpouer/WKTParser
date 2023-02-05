@@ -40,6 +40,10 @@ Point point1 = (Point) linestring.jjtGetChild(0);
 Point point2 = (Point) linestring.jjtGetChild(1);
 ```
 
+```java
+Polygon polygon = WKT.parseShape("POLYGON((40 40, 20 45, 45 30, 40 40))");
+```
+
 ## Licence
 
 WKT Parser is open source and licensed under the MIT License.

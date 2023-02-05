@@ -8,30 +8,19 @@ import com.kpouer.wkt.shape.MultiPolygon;
 import com.kpouer.wkt.shape.Point;
 import com.kpouer.wkt.shape.Polygon;
 import com.kpouer.wkt.shape.*;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.awt.geom.Point2D;
-import java.io.StringReader;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ShapeVisitorTest {
-
-    private ShapeVisitor shapeVisitor;
-
-    @BeforeEach
-    void setUp() {
-        shapeVisitor = new ShapeVisitor();
-    }
-
     @Test
     void visitLineGeometryCollection() throws ParseException {
-        Start start = new WKT(new StringReader("GEOMETRYCOLLECTION (POINT (40 10),\n" +
-                                                   "LINESTRING (30 10,50   77),\n" +
-                                                   "POLYGON ((40 40, 20 45, 45 30, 40 40)))")).Start();
-        GeometryCollection geometryCollection = (GeometryCollection) shapeVisitor.visit(start, null);
+        GeometryCollection geometryCollection = WKT.parseShape("GEOMETRYCOLLECTION (POINT (40 10),\n" +
+                                                                   "LINESTRING (30 10,50   77),\n" +
+                                                                   "POLYGON ((40 40, 20 45, 45 30, 40 40)))");
         List<Shape> shapes = geometryCollection.getShapes();
         assertEquals(3, shapes.size());
         Point point = (Point) shapes.get(0);
@@ -43,15 +32,13 @@ class ShapeVisitorTest {
 
     @Test
     void visitLineString() throws ParseException {
-        Start start = new WKT(new StringReader("LINESTRING(30 10,50   77)")).Start();
-        LineString lineString = (LineString) shapeVisitor.visit(start, null);
+        LineString lineString = WKT.parseShape("LINESTRING(30 10,50   77)");
         validateLineString(lineString);
     }
 
     @Test
     void visitMultiLineString() throws ParseException {
-        Start start = new WKT(new StringReader("MULTILINESTRING ((30 10, 50 77),(40 40, 30 30, 40 20, 30 10))")).Start();
-        MultiLineString multiLineString = (MultiLineString) shapeVisitor.visit(start, null);
+        MultiLineString multiLineString = WKT.parseShape("MULTILINESTRING ((30 10, 50 77),(40 40, 30 30, 40 20, 30 10))");
         List<LineString> lineStrings = multiLineString.getLineStrings();
         assertEquals(2, lineStrings.size());
         validateLineString(lineStrings.get(0));
@@ -59,9 +46,8 @@ class ShapeVisitorTest {
 
     @Test
     void visitMultipoint() throws ParseException {
-        Start start = new WKT(new StringReader("MULTIPOINT (10 40, 40 30, 20 20, 30 10)")).Start();
-        MultiPoint multiPoint = (MultiPoint) shapeVisitor.visit(start, null);
-        List<Point2D.Double> points = multiPoint.getPoints();
+        MultiPoint multiPoint = WKT.parseShape("MULTIPOINT (10 40, 40 30, 20 20, 30 10)");
+        List<Point> points = multiPoint.getPoints();
         assertEquals(10, points.get(0).getX());
         assertEquals(40, points.get(0).getY());
         assertEquals(40, points.get(1).getX());
@@ -74,8 +60,7 @@ class ShapeVisitorTest {
 
     @Test
     void visitMultiPolygon() throws ParseException {
-        Start start = new WKT(new StringReader("MULTIPOLYGON ( ((40 40, 20 45, 45 30, 40 40)),((15 5, 40 10, 10 20, 5 10, 15 5)) )")).Start();
-        MultiPolygon multiPolygon = (MultiPolygon) shapeVisitor.visit(start, null);
+        MultiPolygon multiPolygon = WKT.parseShape("MULTIPOLYGON ( ((40 40, 20 45, 45 30, 40 40)),((15 5, 40 10, 10 20, 5 10, 15 5)) )");
         List<Polygon> polygons = multiPolygon.getPolygons();
         assertEquals(2, polygons.size());
         validatePolygon(polygons.get(0));
@@ -83,8 +68,7 @@ class ShapeVisitorTest {
 
     @Test
     void visitPolygon() throws ParseException {
-        Start start = new WKT(new StringReader("POLYGON((40 40, 20 45, 45 30, 40 40))")).Start();
-        Polygon polygon = (Polygon) shapeVisitor.visit(start, null);
+        Polygon polygon = WKT.parseShape("POLYGON((40 40, 20 45, 45 30, 40 40))");
         validatePolygon(polygon);
     }
 
