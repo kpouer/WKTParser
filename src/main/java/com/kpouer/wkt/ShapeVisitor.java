@@ -26,7 +26,7 @@ import java.util.List;
  * @since 1.1.0
  * @author Matthieu Casanova
  */
-public class ShapeVisitor extends AbstractWKTVisitor<com.kpouer.wkt.shape.Point> {
+public class ShapeVisitor extends AbstractWKTVisitor {
     @Override
     public com.kpouer.wkt.shape.Point visit(Point point, Object data) {
         return new com.kpouer.wkt.shape.Point(Double.parseDouble(point.jjtGetFirstToken().image), Double.parseDouble(point.jjtGetLastToken().image));

@@ -21,7 +21,7 @@ package com.kpouer.wkt;
  * @since 1.1.0
  * @author Matthieu Casanova
  */
-public abstract class AbstractWKTVisitor<E> implements WKTVisitor {
+public abstract class AbstractWKTVisitor implements WKTVisitor {
     @Override
     public Object visit(SimpleNode node, Object data) {
         if (node instanceof GeometryCollection) {
