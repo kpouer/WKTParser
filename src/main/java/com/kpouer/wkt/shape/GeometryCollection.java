@@ -32,9 +32,4 @@ public class GeometryCollection extends AbstractMultiShape<Shape> {
     public List<Shape> getShapes() {
         return shapes;
     }
-
-    @Override
-    public GeometryCollection clone() {
-        return (GeometryCollection) super.clone();
-    }
 }

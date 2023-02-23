@@ -70,9 +70,4 @@ public class MultiPoint extends AbstractShape {
         }
         return new Rectangle2D.Double(x1, y1, x2 - x1, y2 - y1);
     }
-
-    @Override
-    public MultiPoint clone() {
-        return (MultiPoint) super.clone();
-    }
 }

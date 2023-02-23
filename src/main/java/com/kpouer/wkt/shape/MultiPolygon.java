@@ -35,9 +35,4 @@ public class MultiPolygon extends AbstractMultiShape<Polygon> {
     public List<Polygon> getPolygons() {
         return shapes;
     }
-
-    @Override
-    public MultiPolygon clone() {
-        return (MultiPolygon) super.clone();
-    }
 }

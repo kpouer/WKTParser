@@ -31,9 +31,4 @@ public class MultiLineString extends AbstractMultiShape<LineString> {
     public List<LineString> getLineStrings() {
         return shapes;
     }
-
-    @Override
-    public MultiLineString clone() {
-        return (MultiLineString) super.clone();
-    }
 }

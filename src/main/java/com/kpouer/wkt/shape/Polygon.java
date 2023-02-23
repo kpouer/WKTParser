@@ -28,9 +28,4 @@ public class Polygon extends AbstractMultiPointShape {
 
     public Polygon() {
     }
-
-    @Override
-    public Polygon clone() {
-        return (Polygon) super.clone();
-    }
 }

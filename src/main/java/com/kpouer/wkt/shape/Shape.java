@@ -25,8 +25,7 @@ import java.awt.geom.Rectangle2D;
  * @since 1.1.0
  * @author Matthieu Casanova
  */
-public interface Shape extends Cloneable {
+public interface Shape {
     Point getBarycenter();
     Rectangle2D.Double getBounds2D();
-    Shape clone();
 }

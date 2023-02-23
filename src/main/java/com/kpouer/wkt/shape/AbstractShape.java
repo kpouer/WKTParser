@@ -33,13 +33,4 @@ public abstract class AbstractShape implements Shape {
     }
 
     protected abstract Point computeBarycenter();
-
-    @Override
-    public AbstractShape clone() {
-        try {
-            return (AbstractShape) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new RuntimeException(e);
-        }
-    }
 }

@@ -66,7 +66,4 @@ public abstract class AbstractWKTVisitor<E> implements WKTVisitor {
         }
         throw new RuntimeException("Unexpected token type " + firstToken);
     }
-
-    @Override
-    public abstract E visit(Point node, Object data);
 }

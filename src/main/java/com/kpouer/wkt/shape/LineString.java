@@ -28,9 +28,4 @@ public class LineString extends AbstractMultiPointShape {
 
     public LineString() {
     }
-
-    @Override
-    public LineString clone() {
-        return (LineString) super.clone();
-    }
 }
