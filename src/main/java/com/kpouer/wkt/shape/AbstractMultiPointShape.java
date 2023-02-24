@@ -69,7 +69,8 @@ public abstract class AbstractMultiPointShape extends AbstractShape {
             x += xpoints[i];
             y += ypoints[i];
         }
-        return new Point(x / npoints, y / npoints);
+        var nbPoints = closed ? npoints - 1 : npoints;
+        return new Point(x / nbPoints, y / nbPoints);
     }
 
     @Override
