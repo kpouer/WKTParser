@@ -18,16 +18,27 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 package com.kpouer.wkt.shape;
 
 import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
 
 /**
  * @since 1.1.0
  * @author Matthieu Casanova
  */
-public class Point extends Point2D.Double {
+public class Point extends Point2D.Double implements Shape {
     public Point() {
     }
 
     public Point(double x, double y) {
         super(x, y);
+    }
+
+    @Override
+    public Point getBarycenter() {
+        return this;
+    }
+
+    @Override
+    public Rectangle2D.Double getBounds2D() {
+        return new Rectangle2D.Double(x, y, 1, 1);
     }
 }
