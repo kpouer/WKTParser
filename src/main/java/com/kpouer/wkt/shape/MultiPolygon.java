@@ -17,19 +17,19 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  */
 package com.kpouer.wkt.shape;
 
+import lombok.NoArgsConstructor;
+
 import java.util.List;
 
 /**
  * @since 1.1.0
  * @author Matthieu Casanova
  */
+@NoArgsConstructor
 public class MultiPolygon extends AbstractMultiShape<Polygon> {
 
     public MultiPolygon(List<Polygon> polygons) {
         super(polygons);
-    }
-
-    public MultiPolygon() {
     }
 
     public List<Polygon> getPolygons() {

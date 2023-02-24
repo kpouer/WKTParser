@@ -17,15 +17,15 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  */
 package com.kpouer.wkt.shape;
 
+import lombok.NoArgsConstructor;
+
 /**
  * @since 1.1.0
  * @author Matthieu Casanova
  */
+@NoArgsConstructor
 public class LineString extends AbstractMultiPointShape {
     public LineString(double[] xpoints, double[] ypoints) {
         super(xpoints, ypoints, false);
-    }
-
-    public LineString() {
     }
 }

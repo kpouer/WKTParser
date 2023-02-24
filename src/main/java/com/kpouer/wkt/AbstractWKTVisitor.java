@@ -46,7 +46,7 @@ public abstract class AbstractWKTVisitor implements WKTVisitor {
 
     @Override
     public Object visit(Start node, Object data) {
-        Node firstToken = node.jjtGetChild(0);
+        var firstToken = node.jjtGetChild(0);
         if (firstToken instanceof GeometryCollection) {
             return visit((GeometryCollection) firstToken, data);
         } else if (firstToken instanceof Start) {

@@ -17,12 +17,15 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  */
 package com.kpouer.wkt.shape;
 
+import lombok.Getter;
+
 import java.awt.geom.Rectangle2D;
 
 /**
  * @author Matthieu Casanova
  * @since 1.1.0
  */
+@Getter
 public abstract class AbstractMultiPointShape extends AbstractShape {
     private static final int MINSIZE = 4;
 
@@ -41,18 +44,6 @@ public abstract class AbstractMultiPointShape extends AbstractShape {
     protected AbstractMultiPointShape() {
         xpoints = new double[MINSIZE];
         ypoints = new double[MINSIZE];
-    }
-
-    public double[] getXpoints() {
-        return xpoints;
-    }
-
-    public double[] getYpoints() {
-        return ypoints;
-    }
-
-    public int getNpoints() {
-        return npoints;
     }
 
     @Override

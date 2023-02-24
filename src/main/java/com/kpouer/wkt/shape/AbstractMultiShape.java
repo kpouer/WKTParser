@@ -17,6 +17,9 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  */
 package com.kpouer.wkt.shape;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,19 +28,13 @@ import java.util.List;
  * @author Matthieu Casanova
  * @since 1.1.0
  */
+@Getter
+@AllArgsConstructor
 public abstract class AbstractMultiShape<E extends Shape> extends AbstractShape {
     protected final List<E> shapes;
 
-    protected AbstractMultiShape(List<E> shapes) {
-        this.shapes = shapes;
-    }
-
     protected AbstractMultiShape() {
         shapes = new ArrayList<>();
-    }
-
-    public List<E> getShapes() {
-        return shapes;
     }
 
     @Override
@@ -73,14 +70,14 @@ public abstract class AbstractMultiShape<E extends Shape> extends AbstractShape 
         if (shapes.isEmpty()) {
             return new Rectangle2D.Double();
         }
-        Rectangle2D bounds = shapes.get(0).getBounds2D();
+        var bounds = shapes.get(0).getBounds2D();
         double x1 = bounds.getMinX();
         double y1 = bounds.getMinY();
         double x2 = bounds.getMaxY();
         double y2 = bounds.getMaxY();
         int size = shapes.size();
         for (int i = 1; i < size; i++) {
-            Rectangle2D.Double otherBounds = shapes.get(i).getBounds2D();
+            var otherBounds = shapes.get(i).getBounds2D();
             x1 = Math.min(x1, otherBounds.getMinX());
             y1 = Math.min(y1, otherBounds.getMinY());
             x2 = Math.max(x2, otherBounds.getMaxX());

@@ -17,6 +17,8 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  */
 package com.kpouer.wkt.shape;
 
+import lombok.Getter;
+
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +27,7 @@ import java.util.List;
  * @since 1.1.0
  * @author Matthieu Casanova
  */
+@Getter
 public class MultiPoint extends AbstractShape {
     private final List<Point> points;
 
@@ -34,10 +37,6 @@ public class MultiPoint extends AbstractShape {
 
     public MultiPoint() {
         points = new ArrayList<>();
-    }
-
-    public List<Point> getPoints() {
-        return points;
     }
 
     @Override
@@ -61,8 +60,8 @@ public class MultiPoint extends AbstractShape {
         double y2 = y1;
 
         int size = points.size();
-        for (int i = 1; i < size; i++) {
-            Point point = points.get(i);
+        for (var i = 1; i < size; i++) {
+            var point = points.get(i);
             x1 = Math.min(x1, point.getX());
             y1 = Math.min(y1, point.getY());
             x2 = Math.max(x2, point.getX());

@@ -45,9 +45,9 @@ public class ShapeVisitor extends AbstractWKTVisitor {
     @Override
     public com.kpouer.wkt.shape.MultiLineString visit(MultiLineString multiLineString, Object data) {
         int nb = multiLineString.jjtGetNumChildren();
-        List<com.kpouer.wkt.shape.LineString> lineStrings = new ArrayList<>(nb);
+        var lineStrings = new ArrayList<com.kpouer.wkt.shape.LineString>(nb);
         for (int i = 0; i < nb; i++) {
-            com.kpouer.wkt.shape.LineString lineString = visit((LineString) multiLineString.jjtGetChild(i), data);
+            var lineString = visit((LineString) multiLineString.jjtGetChild(i), data);
             lineStrings.add(lineString);
         }
         return new com.kpouer.wkt.shape.MultiLineString(lineStrings);
@@ -56,9 +56,9 @@ public class ShapeVisitor extends AbstractWKTVisitor {
     @Override
     public com.kpouer.wkt.shape.MultiPoint visit(MultiPoint multiPoint, Object data) {
         int nb = multiPoint.jjtGetNumChildren();
-        List<com.kpouer.wkt.shape.Point> list = new ArrayList<>(nb);
+        var list = new ArrayList<com.kpouer.wkt.shape.Point>(nb);
         for (int i = 0; i < nb; i++) {
-            com.kpouer.wkt.shape.Point visit = visit((Point) multiPoint.jjtGetChild(i), data);
+            var visit = visit((Point) multiPoint.jjtGetChild(i), data);
             list.add(visit);
         }
         return new com.kpouer.wkt.shape.MultiPoint(list);
@@ -67,9 +67,9 @@ public class ShapeVisitor extends AbstractWKTVisitor {
     @Override
     public com.kpouer.wkt.shape.MultiPolygon visit(MultiPolygon multiPolygon, Object data) {
         int nb = multiPolygon.jjtGetNumChildren();
-        List<com.kpouer.wkt.shape.Polygon> polygons = new ArrayList<>(nb);
+        var polygons = new ArrayList<com.kpouer.wkt.shape.Polygon>(nb);
         for (int i = 0; i < nb; i++) {
-            com.kpouer.wkt.shape.Polygon polygon = visit((Polygon) multiPolygon.jjtGetChild(i), data);
+            var polygon = visit((Polygon) multiPolygon.jjtGetChild(i), data);
             polygons.add(polygon);
         }
         return new com.kpouer.wkt.shape.MultiPolygon(polygons);
@@ -78,20 +78,20 @@ public class ShapeVisitor extends AbstractWKTVisitor {
     @Override
     public com.kpouer.wkt.shape.GeometryCollection visit(GeometryCollection geometryCollection, Object data) {
         int nb = geometryCollection.jjtGetNumChildren();
-        List<Shape> polygons = new ArrayList<>(nb);
+        var polygons = new ArrayList<Shape>(nb);
         for (int i = 0; i < nb; i++) {
-            Shape visit = (Shape) visit((SimpleNode) geometryCollection.jjtGetChild(i), data);
+            var visit = (Shape) visit((SimpleNode) geometryCollection.jjtGetChild(i), data);
             polygons.add(visit);
         }
         return new com.kpouer.wkt.shape.GeometryCollection(polygons);
     }
 
     private static <E> E buildMultiPointShape(SimpleNode node, MultPointShapeBuilder<E> multPointShapeBuilder) {
-        int npoints = node.jjtGetNumChildren();
-        double[] xpoints = new double[npoints];
-        double[] ypoints = new double[npoints];
-        for (int i = 0;i<npoints;i++) {
-            Point point = (Point) node.jjtGetChild(i);
+        var npoints = node.jjtGetNumChildren();
+        var xpoints = new double[npoints];
+        var ypoints = new double[npoints];
+        for (var i = 0;i<npoints;i++) {
+            var point = (Point) node.jjtGetChild(i);
             xpoints[i] = Double.parseDouble(point.jjtGetFirstToken().image);
             ypoints[i] = Double.parseDouble(point.jjtGetLastToken().image);
         }

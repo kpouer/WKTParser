@@ -17,6 +17,8 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  */
 package com.kpouer.wkt.shape;
 
+import lombok.NoArgsConstructor;
+
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
@@ -24,10 +26,8 @@ import java.awt.geom.Rectangle2D;
  * @since 1.1.0
  * @author Matthieu Casanova
  */
+@NoArgsConstructor
 public class Point extends Point2D.Double implements Shape {
-    public Point() {
-    }
-
     public Point(double x, double y) {
         super(x, y);
     }
