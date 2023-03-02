@@ -16,6 +16,7 @@ public class WKTPanel extends Component {
     public void setShape(Shape shape) {
         if (shape == null) {
             this.shape = null;
+            return;
         }
         recomputeGeometry(shape, shape.getBounds2D());
         this.shape = shape;
