@@ -20,7 +20,6 @@ package com.kpouer.wkt;
 import com.kpouer.wkt.shape.Shape;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @since 1.1.0

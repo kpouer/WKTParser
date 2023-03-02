@@ -17,19 +17,17 @@ public class WKTPanel extends Component {
         if (shape == null) {
             this.shape = null;
         }
-        Shape newShape = shape.clone();
-        recomputeGeometry(newShape, shape.getBounds2D());
-        this.shape = newShape;
+        recomputeGeometry(shape, shape.getBounds2D());
+        this.shape = shape;
     }
 
     private void recomputeGeometry(Shape shape, Rectangle2D.Double bounds) {
-        Shape newShape = shape.clone();
-        if (newShape instanceof AbstractMultiShape) {
-            recomputeAbstractMultiShape((AbstractMultiShape<? extends Shape>) newShape, bounds);
-        } else if (newShape instanceof AbstractMultiPointShape) {
-            recomputeAbstractMultiPointShape((AbstractMultiPointShape) newShape, bounds);
-        } else if (newShape instanceof com.kpouer.wkt.shape.MultiPoint) {
-            recomputeMultiPoint((com.kpouer.wkt.shape.MultiPoint) newShape, bounds);
+        if (shape instanceof AbstractMultiShape) {
+            recomputeAbstractMultiShape((AbstractMultiShape<? extends Shape>) shape, bounds);
+        } else if (shape instanceof AbstractMultiPointShape) {
+            recomputeAbstractMultiPointShape((AbstractMultiPointShape) shape, bounds);
+        } else if (shape instanceof com.kpouer.wkt.shape.MultiPoint) {
+            recomputeMultiPoint((com.kpouer.wkt.shape.MultiPoint) shape, bounds);
         }
     }
 
