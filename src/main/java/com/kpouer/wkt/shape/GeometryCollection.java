@@ -20,6 +20,7 @@ package com.kpouer.wkt.shape;
 import java.util.List;
 
 /**
+ * A GeometryCollection is a geometry collection of Shape.
  * @since 1.1.0
  * @author Matthieu Casanova
  */

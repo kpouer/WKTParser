@@ -22,6 +22,7 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 /**
+ * A MultiPolygon is a geometry collection of Polygon.
  * @since 1.1.0
  * @author Matthieu Casanova
  */

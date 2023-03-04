@@ -20,7 +20,8 @@ package com.kpouer.wkt.shape;
 import java.awt.geom.Rectangle2D;
 
 /**
- * A Shape, the parent class of all shapes
+ * A Shape, the parent class of all shapes.
+ * It has a barycenter and a bounding box.
  *
  * @since 1.1.0
  * @author Matthieu Casanova

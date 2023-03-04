@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * An abstract class for MultiShape.
  * @author Matthieu Casanova
  * @since 1.1.0
  */

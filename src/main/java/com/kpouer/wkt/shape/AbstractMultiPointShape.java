@@ -22,6 +22,7 @@ import lombok.Getter;
 import java.awt.geom.Rectangle2D;
 
 /**
+ * An abstract class for shapes that have multiple points.
  * @author Matthieu Casanova
  * @since 1.1.0
  */

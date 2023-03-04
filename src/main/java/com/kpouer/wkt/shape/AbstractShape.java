@@ -18,6 +18,7 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 package com.kpouer.wkt.shape;
 
 /**
+ * An abstract shape
  * @since 1.1.0
  * @author Matthieu Casanova
  */

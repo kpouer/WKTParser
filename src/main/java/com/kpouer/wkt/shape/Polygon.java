@@ -20,6 +20,7 @@ package com.kpouer.wkt.shape;
 import lombok.NoArgsConstructor;
 
 /**
+ * A Polygon using double coordinates
  * @since 1.1.0
  * @author Matthieu Casanova
  */

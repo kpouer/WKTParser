@@ -20,6 +20,8 @@ package com.kpouer.wkt.shape;
 import java.util.List;
 
 /**
+ * A MultiLineString is a geometry collection of LineString.
+ *
  * @since 1.1.0
  * @author Matthieu Casanova
  */

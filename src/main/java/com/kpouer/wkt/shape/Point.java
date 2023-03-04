@@ -23,6 +23,7 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
 /**
+ * It's a {@link Point2D.Double} that implements {@link Shape}
  * @since 1.1.0
  * @author Matthieu Casanova
  */

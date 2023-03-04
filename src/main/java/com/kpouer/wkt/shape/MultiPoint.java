@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * A MultiPoint is a geometry collection of Point.
  * @since 1.1.0
  * @author Matthieu Casanova
  */
