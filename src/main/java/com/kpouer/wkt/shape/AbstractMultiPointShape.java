@@ -17,6 +17,7 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  */
 package com.kpouer.wkt.shape;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 import java.awt.geom.Rectangle2D;
@@ -27,6 +28,7 @@ import java.awt.geom.Rectangle2D;
  * @since 1.1.0
  */
 @Getter
+@EqualsAndHashCode
 public abstract class AbstractMultiPointShape extends AbstractShape {
     private static final int MINSIZE = 4;
 

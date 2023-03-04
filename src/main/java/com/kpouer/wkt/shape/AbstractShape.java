@@ -17,13 +17,16 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  */
 package com.kpouer.wkt.shape;
 
+import org.jetbrains.annotations.Nullable;
+
 /**
  * An abstract shape
  * @since 1.1.0
  * @author Matthieu Casanova
  */
 public abstract class AbstractShape implements Shape {
-    private Point barycenter;
+    @Nullable
+    protected Point barycenter;
 
     @Override
     public Point getBarycenter() {

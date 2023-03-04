@@ -18,6 +18,7 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 package com.kpouer.wkt.shape;
 
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 import java.awt.geom.Rectangle2D;
@@ -31,6 +32,7 @@ import java.util.List;
  */
 @Getter
 @AllArgsConstructor
+@EqualsAndHashCode
 public abstract class AbstractMultiShape<E extends Shape> extends AbstractShape {
     protected final List<E> shapes;
 
@@ -38,9 +40,14 @@ public abstract class AbstractMultiShape<E extends Shape> extends AbstractShape 
         shapes = new ArrayList<>();
     }
 
+    protected void addShape(E shape) {
+        shapes.add(shape);
+        barycenter = null;
+    }
+
     @Override
     protected Point computeBarycenter() {
-        Point[] barycenters = getBarycenters();
+        var barycenters = getBarycenters();
         return computeBarycenterFromPoints(barycenters);
     }
 

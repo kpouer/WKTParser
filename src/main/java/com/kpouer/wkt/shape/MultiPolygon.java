@@ -17,6 +17,7 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  */
 package com.kpouer.wkt.shape;
 
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
@@ -27,6 +28,7 @@ import java.util.List;
  * @author Matthieu Casanova
  */
 @NoArgsConstructor
+@EqualsAndHashCode(callSuper = true)
 public class MultiPolygon extends AbstractMultiShape<Polygon> {
 
     public MultiPolygon(List<Polygon> polygons) {
@@ -35,5 +37,9 @@ public class MultiPolygon extends AbstractMultiShape<Polygon> {
 
     public List<Polygon> getPolygons() {
         return shapes;
+    }
+
+    public void addPolygon(Polygon polygon) {
+        addShape(polygon);
     }
 }
