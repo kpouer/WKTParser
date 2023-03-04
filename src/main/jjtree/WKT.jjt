@@ -1,6 +1,6 @@
 /*
 The MIT License (MIT)
-Copyright (c) 2020 Matthieu Casanova
+Copyright (c) 2020-2023 Matthieu Casanova
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
 documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
@@ -30,13 +30,23 @@ options {
 PARSER_BEGIN(WKT)
 package com.kpouer.wkt;
 
-import java.io.*;
+import com.kpouer.wkt.shape.Shape;import java.io.*;
 
 /**
 * @author Matthieu Casanova
 */
-public class WKT
-{
+public class WKT {
+    /**
+     * Parse a WKT shape and return a {@link Shape}
+     * @throws ParseException if the wkt string cannot be parsed
+     * @throws ClassCastException if the result is not the expected shape
+     * @since 1.1.0
+     */
+    public static <E extends Shape> E parseShape(String wkt) throws ParseException, ClassCastException {
+        Start start = new WKT(new StringReader(wkt)).Start();
+        ShapeVisitor shapeVisitor = new ShapeVisitor();
+        return (E) shapeVisitor.visit(start, null);
+    }
 }
 
 PARSER_END(WKT)

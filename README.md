@@ -39,6 +39,12 @@ LineString linestring = (LineString) start.jjtGetChild(0);
 Point point1 = (Point) linestring.jjtGetChild(0);
 Point point2 = (Point) linestring.jjtGetChild(1);
 ```
+By default the parser will use JJT tree classes. But you could also use the shapes from
+com.kpouer.wkt.shape package that implements shapes using double values.
+
+```java
+Polygon polygon = WKT.parseShape("POLYGON((40 40, 20 45, 45 30, 40 40))");
+```
 
 ## Licence
 
