@@ -41,7 +41,7 @@ public abstract class AbstractWKTVisitor implements WKTVisitor {
         } else if (node instanceof Point) {
             return visit((Point) node, data);
         }
-        throw new RuntimeException("Unexpected token type " + node);
+        throw new IllegalArgumentException("Unexpected token type " + node);
     }
 
     @Override
@@ -64,6 +64,6 @@ public abstract class AbstractWKTVisitor implements WKTVisitor {
         } else if (firstToken instanceof Point) {
             return visit((Point) firstToken, data);
         }
-        throw new RuntimeException("Unexpected token type " + firstToken);
+        throw new IllegalArgumentException("Unexpected token type " + firstToken);
     }
 }
