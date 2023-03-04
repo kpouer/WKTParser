@@ -22,4 +22,18 @@ class PolygonTest {
         assertEquals(7.5, polygon.getBarycenter().getX());
         assertEquals(7.5, polygon.getBarycenter().getY());
     }
+
+    @Test
+    void testClosed() throws ParseException {
+        Polygon polygon = WKT.parseShape("POLYGON((5 5,5 10, 10 10, 10 5, 5 5))");
+        assertTrue(polygon.isClosed());
+    }
+
+    @Test
+    void testOnePoint() throws ParseException {
+        Polygon polygon = WKT.parseShape("POLYGON((5 7,5 7))");
+        assertTrue(polygon.isClosed());
+        assertEquals(5, polygon.getBarycenter().getX());
+        assertEquals(7, polygon.getBarycenter().getY());
+    }
 }
