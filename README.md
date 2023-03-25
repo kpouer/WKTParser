@@ -1,6 +1,6 @@
 ![Java CI with Maven](https://github.com/kpouer/WKTParser/workflows/Java%20CI%20with%20Maven/badge.svg)
 ![CodeQL](https://github.com/kpouer/WKTParser/workflows/CodeQL/badge.svg)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.kpouer/wktparser/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.kpouer/wktparser)
+[![Maven Central](https://img.shields.io/maven-central/v/com.kpouer/wktparser)](https://central.sonatype.com/artifact/com.kpouer/wktparser/1.1.1/versions)
 # WKTParser
 A simple WKT (Well Know Text) parser grammar written for JavaCC.
 
@@ -16,7 +16,7 @@ Available through Maven central
 <dependency>
   <groupId>com.kpouer</groupId>
   <artifactId>wktparser</artifactId>
-  <version>1.1.0</version>
+  <version>1.1.1</version>
 </dependency>
 ```
 
