@@ -16,7 +16,7 @@ Available through Maven central
 <dependency>
   <groupId>com.kpouer</groupId>
   <artifactId>wktparser</artifactId>
-  <version>1.0.0</version>
+  <version>1.1.0</version>
 </dependency>
 ```
 
