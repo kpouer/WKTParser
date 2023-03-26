@@ -1,7 +1,8 @@
+# WKTParser
 ![Java CI with Maven](https://github.com/kpouer/WKTParser/workflows/Java%20CI%20with%20Maven/badge.svg)
 ![CodeQL](https://github.com/kpouer/WKTParser/workflows/CodeQL/badge.svg)
 [![Maven Central](https://img.shields.io/maven-central/v/com.kpouer/wktparser)](https://central.sonatype.com/artifact/com.kpouer/wktparser/1.1.1/versions)
-# WKTParser
+
 A simple WKT (Well Know Text) parser grammar written for JavaCC.
 
 The goal was to use it in a jEdit plugin, but you can use it for any other purpose
